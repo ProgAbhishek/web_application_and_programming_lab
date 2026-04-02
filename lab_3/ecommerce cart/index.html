@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-Commerce Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero card">
+            <div>
+                <p class="eyebrow">Made by Abhishek</p>
+                <h1>Simple E-Commerce Cart</h1>
+                <p class="lead">Add products to cart, adjust quantities, remove items, and watch totals update instantly.</p>
+            </div>
+            <div class="hero-note">
+                <span>Live Cart Total</span>
+                <strong id="hero-total">$0.00</strong>
+            </div>
+        </section>
+
+        <section class="layout">
+            <section class="card products-card">
+                <div class="card-head">
+                    <h2>Products</h2>
+                    <p>Available items</p>
+                </div>
+                <div id="products-grid" class="products-grid"></div>
+            </section>
+
+            <section class="card cart-card">
+                <div class="card-head">
+                    <h2>Your Cart</h2>
+                    <p id="cart-count">0 items</p>
+                </div>
+
+                <div id="cart-items" class="cart-items">
+                    <p class="empty-state">Cart is empty. Add products to begin.</p>
+                </div>
+
+                <div class="summary">
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="subtotal">$0.00</strong>
+                    </div>
+                    <div>
+                        <span>Shipping</span>
+                        <strong id="shipping">$0.00</strong>
+                    </div>
+                    <div class="grand-total">
+                        <span>Total</span>
+                        <strong id="grand-total">$0.00</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

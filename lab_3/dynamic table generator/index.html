@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="card intro">
+            <p class="eyebrow">Made By Abhi</p>
+            <h1>Dynamic Table Generator</h1>
+            <p class="lead">Set rows and columns, generate your table, then use controls to add or delete rows and highlight even rows.</p>
+        </section>
+
+        <section class="card controls-card">
+            <form id="table-form" class="table-form" autocomplete="off">
+                <label>
+                    <span>Rows</span>
+                    <input id="rows-input" type="number" min="1" max="30" value="4" required>
+                </label>
+                <label>
+                    <span>Columns</span>
+                    <input id="cols-input" type="number" min="1" max="12" value="4" required>
+                </label>
+                <button type="submit" class="primary-btn">Generate Table</button>
+            </form>
+
+            <div class="action-row">
+                <button id="add-row-btn" type="button" class="secondary-btn">Add Row</button>
+                <button id="delete-row-btn" type="button" class="danger-btn">Delete Row</button>
+                <button id="highlight-btn" type="button" class="ghost-btn">Highlight Even Rows</button>
+            </div>
+            <p id="status" class="status">Create your table to begin.</p>
+        </section>
+
+        <section class="card table-card">
+            <div class="table-wrap" id="table-wrap">
+                <p class="empty-state">No table yet. Use Generate Table to create one.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

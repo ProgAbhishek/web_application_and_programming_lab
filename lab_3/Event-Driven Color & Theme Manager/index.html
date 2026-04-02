@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-Driven Color and Theme Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="card hero">
+            <p class="eyebrow">abhishek tharu</p>
+            <h1>Event-Driven Color and Theme Manager</h1>
+            <p class="lead">Pick your own background, text, and button colors. The page updates immediately and can reset to default anytime.</p>
+        </section>
+
+        <section class="card controls-card">
+            <h2>Theme Controls</h2>
+            <div class="controls-grid">
+                <label class="control-item" for="bg-color">
+                    <span>Background Color</span>
+                    <input type="color" id="bg-color" value="#f4f7fb">
+                </label>
+
+                <label class="control-item" for="text-color">
+                    <span>Text Color</span>
+                    <input type="color" id="text-color" value="#16324f">
+                </label>
+
+                <label class="control-item" for="button-color">
+                    <span>Button Color</span>
+                    <input type="color" id="button-color" value="#2563eb">
+                </label>
+            </div>
+
+            <div class="actions">
+                <button id="apply-btn" class="primary-btn" type="button">Apply Theme</button>
+                <button id="reset-btn" class="ghost-btn" type="button">Reset Default</button>
+            </div>
+
+            <p id="status" class="status">Choose colors and click Apply Theme.</p>
+        </section>
+
+        <section class="card preview-card">
+            <h2>Preview Panel</h2>
+            <p>This section reflects the selected theme colors.</p>
+            <div class="preview-actions">
+                <button class="preview-btn">Primary Action</button>
+                <button class="preview-btn alt">Secondary Action</button>
+            </div>
+            <pre id="theme-object" class="theme-object"></pre>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

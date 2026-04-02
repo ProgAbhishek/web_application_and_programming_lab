@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock & Timer</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 20px; background: #f0f0f0; }
+        .clock { font-size: 2em; margin: 20px; }
+        .timer { margin: 20px; }
+        input { width: 60px; padding: 5px; }
+        button { padding: 5px 10px; margin: 5px; }
+        #countdown { font-size: 1.5em; color: red; }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div class="clock" id="clock"></div>
+    
+    
+    <h1>Countdown Timer</h1>
+    <div class="timer">
+        <input type="number" id="min" placeholder="Min" min="0">
+        <input type="number" id="sec" placeholder="Sec" min="0">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="stopTimer()">Stop</button>
+        <div id="countdown">00:00</div>
+    </div>
+    
+    <script>
+        // Digital Clock
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        
+        // Countdown Timer
+        let timerInterval;
+        function startTimer() {
+            const min = parseInt(document.getElementById('min').value) || 0;
+            const sec = parseInt(document.getElementById('sec').value) || 0;
+            let totalSec = min * 60 + sec;
+            if (totalSec <= 0) return;
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const m = Math.floor(totalSec / 60);
+                const s = totalSec % 60;
+                document.getElementById('countdown').textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+                if (totalSec-- <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Time\'s up!');
+                }
+            }, 1000);
+        }
+        function stopTimer() {
+            clearInterval(timerInterval);
+            document.getElementById('countdown').textContent = '00:00';
+        }
+        
+    </script>
+</body>
+</html>

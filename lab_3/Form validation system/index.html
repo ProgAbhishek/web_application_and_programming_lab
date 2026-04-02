@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero card">
+            <p class="eyebrow">Developed By abhichau</p>
+            <h1>Form Validation System</h1>
+            <p class="lead">Validate name, email, and password with dynamic feedback before allowing submission.</p>
+        </section>
+
+        <section class="card form-card">
+            <form id="signup-form" class="signup-form" novalidate>
+                <div class="field" id="name-field">
+                    <label for="name">Full Name</label>
+                    <input id="name" name="name" type="text" placeholder="Enter your full name" autocomplete="name" required>
+                    <small class="error" id="name-error"></small>
+                </div>
+
+                <div class="field" id="email-field">
+                    <label for="email">Email Address</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                    <small class="error" id="email-error"></small>
+                </div>
+
+                <div class="field" id="password-field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" required>
+                    <small class="error" id="password-error"></small>
+                </div>
+
+                <ul class="rules" aria-label="Password rules">
+                    <li>Minimum 8 characters</li>
+                    <li>At least one uppercase letter</li>
+                    <li>At least one lowercase letter</li>
+                    <li>At least one number</li>
+                </ul>
+
+                <div class="actions">
+                    <button type="submit" class="primary-btn">Submit Form</button>
+                    <button type="button" id="reset-btn" class="ghost-btn">Reset</button>
+                </div>
+                <p id="success-message" class="success-message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <p class="credit">developed by ProgAbhi</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
