@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Register — Library{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+
+  <h2>Create an account</h2>
+
+  <form method="POST" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="mb-3">
+
+        <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+          {{ field.label }}
+        </label>
+
+        {# Render the input widget with Bootstrap class #}
+        {% if field.errors %}
+          {{ field|add_class:"form-control is-invalid" }}
+        {% else %}
+          {{ field|add_class:"form-control" }}
+        {% endif %}
+
+        {# Field-level help text (e.g. password hints) #}
+        {% if field.help_text %}
+          <div class="form-text text-muted">{{ field.help_text }}</div>
+        {% endif %}
+
+        {# Field-level validation errors #}
+        {% for error in field.errors %}
+          <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+
+      </div>
+    {% endfor %}
+
+    {# Non-field errors (e.g. passwords don't match) #}
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {% for error in form.non_field_errors %}
+          <p class="mb-0">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="d-grid mt-3">
+      <button type="submit" class="btn btn-dark">Create account</button>
+    </div>
+
+  </form>
+
+  <hr class="my-3" />
+  <p class="text-center text-muted mb-0" style="font-size: 0.9rem;">
+    Already have an account?
+    <a href="{% url 'login' %}">Sign in</a>
+  </p>
+
+</div>
+{% endblock %}

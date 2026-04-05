@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Login — Library{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+
+  <h2>Sign in</h2>
+
+  <form method="POST" novalidate>
+    {% csrf_token %}
+
+    {# The ?next= param is preserved so Django redirects correctly after login #}
+    {% if request.GET.next %}
+      <input type="hidden" name="next" value="{{ request.GET.next }}" />
+    {% endif %}
+
+    {# Username field #}
+    <div class="mb-3">
+      <label for="{{ form.username.id_for_label }}" class="form-label fw-semibold">
+        Username
+      </label>
+      <input
+        type="text"
+        name="username"
+        id="{{ form.username.id_for_label }}"
+        class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+        value="{{ form.username.value|default:'' }}"
+        autofocus
+      />
+      {% for error in form.username.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    {# Password field #}
+    <div class="mb-3">
+      <label for="{{ form.password.id_for_label }}" class="form-label fw-semibold">
+        Password
+      </label>
+      <input
+        type="password"
+        name="password"
+        id="{{ form.password.id_for_label }}"
+        class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+      />
+      {% for error in form.password.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    {# Non-field errors — wrong password, inactive account, etc. #}
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger py-2">
+        {% for error in form.non_field_errors %}
+          <p class="mb-0">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="d-grid mt-3">
+      <button type="submit" class="btn btn-dark">Sign in</button>
+    </div>
+
+  </form>
+
+  <hr class="my-3" />
+  <p class="text-center text-muted mb-0" style="font-size: 0.9rem;">
+    Don't have an account?
+    <a href="{% url 'register' %}">Register</a>
+  </p>
+
+</div>
+{% endblock %}

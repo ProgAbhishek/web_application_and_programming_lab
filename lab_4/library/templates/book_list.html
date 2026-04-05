@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Books</h2>
+
+<!-- Search Form — GET request -->
+<form method="GET" class="d-flex gap-2 mb-3">
+  {{ form.query }} {{ form.available_only }} Available only
+  <button type="submit" class="btn btn-primary btn-sm">Search</button>
+</form>
+
+{% if user.is_authenticated %}
+  <a href="{% url 'book_create' %}" class="btn btn-success mb-3">+ Add Book</a>
+{% endif %}
+
+<table class="table table-hover">
+  <thead><tr><th>Title</th><th>Author</th><th>Genre</th><th>Available</th><th></th></tr></thead>
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.genre }}</td>
+      <td>{% if book.available %}Y{% else %}N{% endif %}</td>
+      <td>
+        {% if user.is_authenticated %}
+          <a href="{% url 'book_update' book.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+          <a href="{% url 'book_delete' book.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+        {% endif %}
+      </td>
+    </tr>
+    {% empty %}
+      <tr><td colspan="5">No books found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
