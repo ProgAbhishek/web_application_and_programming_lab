@@ -1,0 +1,237 @@
+:root {
+  --bg-1: #f0f7ff;
+  --bg-2: #fff3e8;
+  --ink: #11243a;
+  --muted: #4b6077;
+  --card: #fffefc;
+  --line: #dbe4ef;
+  --accent: #0b7a75;
+  --accent-2: #06a593;
+  --good: #1f8d5f;
+  --bad: #c6453d;
+  --warn: #a26a15;
+  --shadow: 0 18px 36px rgba(17, 36, 58, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+  background:
+    radial-gradient(circle at 10% 10%, #eef6ff 0, transparent 38%),
+    radial-gradient(circle at 90% 85%, #ffeedd 0, transparent 40%),
+    linear-gradient(140deg, var(--bg-1), var(--bg-2));
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(17, 36, 58, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 36, 58, 0.06) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+}
+
+.quiz-shell {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  animation: rise 0.65s ease;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.label {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 8px 0;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.quiz-card,
+.result-card {
+  background: color-mix(in srgb, var(--card) 90%, white 10%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.chip {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+
+.chip span {
+  display: block;
+  font-family: "Rajdhani", sans-serif;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chip strong {
+  font-size: 1.25rem;
+}
+
+.category {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.question {
+  margin: 10px 0 14px;
+  font-size: clamp(1.2rem, 3.2vw, 1.55rem);
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option-btn {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 12px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.option-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: #bccbdb;
+}
+
+.option-btn.correct {
+  background: #e4f7ed;
+  border-color: #8ad0aa;
+  color: var(--good);
+}
+
+.option-btn.wrong {
+  background: #fbe3e0;
+  border-color: #e89b95;
+  color: var(--bad);
+}
+
+.option-btn:disabled {
+  cursor: default;
+}
+
+.feedback {
+  min-height: 1.4em;
+  margin: 12px 0;
+  color: var(--warn);
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #f7fffd;
+  padding: 11px 16px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.result-card {
+  text-align: center;
+}
+
+.result-card h2 {
+  margin-top: 0;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 14px;
+  }
+
+  .quiz-card,
+  .result-card {
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .actions button,
+  .result-card button {
+    width: 100%;
+  }
+}

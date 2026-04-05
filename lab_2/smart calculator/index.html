@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero card">
+            <p class="eyebrow">Lab 2</p>
+            <h1>Smart Calculator</h1>
+            <p class="lead">Perform basic arithmetic, keep the last 5 calculations, and clear history anytime.</p>
+        </section>
+
+        <section class="calculator-wrap">
+            <section class="calculator card">
+                <div class="display">
+                    <p id="expression" class="expression">0</p>
+                    <input type="text" id="display" readonly value="0" aria-label="Calculator display">
+                </div>
+
+                <div class="buttons" id="buttons">
+                    <button class="btn action" data-action="clear">C</button>
+                    <button class="btn action" data-action="delete">DEL</button>
+                    <button class="btn action" data-action="percent">%</button>
+                    <button class="btn operator" data-value="/">/</button>
+
+                    <button class="btn" data-value="7">7</button>
+                    <button class="btn" data-value="8">8</button>
+                    <button class="btn" data-value="9">9</button>
+                    <button class="btn operator" data-value="*">x</button>
+
+                    <button class="btn" data-value="4">4</button>
+                    <button class="btn" data-value="5">5</button>
+                    <button class="btn" data-value="6">6</button>
+                    <button class="btn operator" data-value="-">-</button>
+
+                    <button class="btn" data-value="1">1</button>
+                    <button class="btn" data-value="2">2</button>
+                    <button class="btn" data-value="3">3</button>
+                    <button class="btn operator" data-value="+">+</button>
+
+                    <button class="btn" data-action="toggle-sign">+/-</button>
+                    <button class="btn" data-value="0">0</button>
+                    <button class="btn" data-value=".">.</button>
+                    <button class="btn equal" data-action="equals">=</button>
+                </div>
+            </section>
+
+            <section class="history card">
+                <div class="history-head">
+                    <h2>History</h2>
+                    <button id="clear-history" class="clear-history" type="button">Clear History</button>
+                </div>
+                <ul id="history-list"></ul>
+                <p id="history-empty" class="history-empty">No calculations yet.</p>
+            </section>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

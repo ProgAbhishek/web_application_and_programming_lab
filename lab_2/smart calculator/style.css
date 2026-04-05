@@ -1,0 +1,217 @@
+:root {
+    --bg: #eef4ff;
+    --panel: rgba(255, 255, 255, 0.94);
+    --panel-border: rgba(18, 32, 55, 0.12);
+    --text: #173250;
+    --muted: #5e7289;
+    --accent: #0ea5a4;
+    --accent-dark: #0f766e;
+    --operator: #2563eb;
+    --danger: #b42318;
+    --shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(14, 165, 164, 0.16), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.16), transparent 28%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+    padding: 30px 14px 44px;
+}
+
+.app-shell {
+    width: min(1080px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+.hero {
+    padding: 22px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.03;
+}
+
+.lead {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+.calculator-wrap {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(260px, 0.8fr);
+    gap: 16px;
+}
+
+.calculator,
+.history {
+    padding: 18px;
+}
+
+.display {
+    padding: 14px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid rgba(23, 50, 80, 0.12);
+    margin-bottom: 14px;
+}
+
+.expression {
+    margin: 0;
+    min-height: 20px;
+    color: var(--muted);
+    text-align: right;
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#display {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    text-align: right;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 4px;
+}
+
+#display:focus {
+    outline: none;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 14px;
+    min-height: 52px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    background: #ecf1fb;
+    color: var(--text);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.operator {
+    background: rgba(37, 99, 235, 0.14);
+    color: var(--operator);
+}
+
+.action {
+    background: rgba(14, 165, 164, 0.15);
+    color: var(--accent-dark);
+}
+
+.equal {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    box-shadow: 0 10px 18px rgba(14, 165, 164, 0.25);
+}
+
+.history-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.history h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.clear-history {
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: #fdecec;
+    color: var(--danger);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#history-list {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+#history-list li {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(23, 50, 80, 0.1);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.history-empty {
+    color: var(--muted);
+    text-align: center;
+    margin: 14px 0 0;
+    font-style: italic;
+}
+
+@media (max-width: 860px) {
+    .calculator-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 16px 10px 28px;
+    }
+
+    .hero,
+    .calculator,
+    .history {
+        padding: 14px;
+    }
+}

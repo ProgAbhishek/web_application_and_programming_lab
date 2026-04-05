@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering MCQ Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="quiz-shell">
+    <header class="hero">
+      <p class="label">Practice Mode</p>
+      <h1>Engineering MCQ Quiz</h1>
+      <p class="subtitle">Answer multiple-choice questions from circuits, mechanics, thermodynamics, and programming.</p>
+    </header>
+
+    <section class="quiz-card" id="quiz-card">
+      <div class="top-bar">
+        <div class="chip">
+          <span>Question</span>
+          <strong id="progress">1 / 10</strong>
+        </div>
+        <div class="chip">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+      </div>
+
+      <p id="category" class="category">Category</p>
+      <h2 id="question" class="question">Question text</h2>
+
+      <div id="options" class="options"></div>
+
+      <p id="feedback" class="feedback" aria-live="polite">Choose one option.</p>
+
+      <div class="actions">
+        <button id="next-btn" type="button" disabled>Next Question</button>
+      </div>
+    </section>
+
+    <section id="result-card" class="result-card hidden">
+      <h2>Quiz Complete</h2>
+      <p id="result-text">You scored 0 out of 10.</p>
+      <button id="restart-btn" type="button">Restart Quiz</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

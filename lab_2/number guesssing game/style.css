@@ -1,0 +1,257 @@
+:root {
+  --bg-1: #f2e9dd;
+  --bg-2: #d9eef6;
+  --ink: #152238;
+  --muted: #4f5f73;
+  --card: #fffcf7;
+  --accent: #e0562b;
+  --accent-deep: #ba3f1a;
+  --ok: #16755b;
+  --warn: #8f5f13;
+  --danger: #9c2f2f;
+  --ring: rgba(21, 34, 56, 0.16);
+  --shadow: 0 20px 40px rgba(21, 34, 56, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 10%, #fff7eb 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, #d6ebff 0%, transparent 45%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+  pointer-events: none;
+}
+
+.game-shell {
+  width: min(680px, 100%);
+  position: relative;
+  z-index: 1;
+  animation: fade-slide 0.7s ease;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.tag {
+  margin: 0;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  margin: 8px 0;
+  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.panel {
+  background: color-mix(in srgb, var(--card) 88%, white 12%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-pill {
+  background: white;
+  border: 1px solid #e6eaf0;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.stat-pill span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat-pill strong {
+  font-size: 1.45rem;
+}
+
+.guess-form {
+  margin-top: 16px;
+}
+
+.guess-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input {
+  border-radius: 12px;
+  border: 1px solid #d5dbe4;
+  padding: 12px;
+  outline: none;
+  background: #ffffff;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(224, 86, 43, 0.16);
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#guess-form button {
+  background: linear-gradient(135deg, var(--accent), #f0803a);
+  color: white;
+  font-weight: 700;
+}
+
+.secondary {
+  background: #1d2a40;
+  color: #f7fbff;
+}
+
+.message {
+  margin: 14px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  background: #eef3f9;
+  color: var(--ink);
+}
+
+.message.ok {
+  background: #dff5ea;
+  color: var(--ok);
+}
+
+.message.warn {
+  background: #f8efd8;
+  color: var(--warn);
+}
+
+.message.danger {
+  background: #f9dede;
+  color: var(--danger);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.history-wrap {
+  margin-top: 14px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.history-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.history-list li {
+  background: #ffffff;
+  border: 1px solid #dce3ed;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+@keyframes fade-slide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 560px) {
+  .panel {
+    border-radius: 16px;
+    padding: 15px;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .actions .secondary {
+    width: 100%;
+  }
+}

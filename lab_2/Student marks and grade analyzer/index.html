@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks & Grade Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Marks & Grade Analyzer</h1>
+        <form id="student-form">
+            <label for="name">Student Name:</label>
+            <input type="text" id="name" required>
+            
+            <div class="marks-input">
+                <h3>Marks (0-100 per subject):</h3>
+                <div class="subject-box">
+                    <label for="sub1">Subject 1:</label>
+                    <input type="number" id="sub1" min="0" max="100" required>
+                </div>
+                <div class="subject-box">
+                    <label for="sub2">Subject 2:</label>
+                    <input type="number" id="sub2" min="0" max="100" required>
+                </div>
+                <div class="subject-box">
+                    <label for="sub3">Subject 3:</label>
+                    <input type="number" id="sub3" min="0" max="100" required>
+                </div>
+                <div class="subject-box">
+                    <label for="sub4">Subject 4:</label>
+                    <input type="number" id="sub4" min="0" max="100" required>
+                </div>
+                <div class="subject-box">
+                    <label for="sub5">Subject 5:</label>
+                    <input type="number" id="sub5" min="0" max="100" required>
+                </div>
+            </div>
+            
+            <button type="submit">Add Student</button>
+            <button type="button" id="clear-all">Clear All</button>
+        </form>
+        
+        <table id="results-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Sub1</th>
+                    <th>Sub2</th>
+                    <th>Sub3</th>
+                    <th>Sub4</th>
+                    <th>Sub5</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Rows added dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
